@@ -4,10 +4,18 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBars, faCog } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCog,
+  faSun,
+  faCloud,
+  faTint,
+  faBolt,
+  faSnowflake
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faBars, faCog);
+library.add(faBars, faCog, faSun, faCloud, faTint, faBolt, faSnowflake);
 
 Vue.component("icon", FontAwesomeIcon);
 
