@@ -13,7 +13,7 @@ import Moment from "moment";
 export default Vue.extend({
   props: {
     day: {
-      type: String,
+      type: Number,
       required: true
     },
     weather: {
@@ -32,20 +32,21 @@ export default Vue.extend({
 
   data: () => ({
     weathers: {
-      sun: "sun",
-      cloud: "cloud",
+      clear: "sun",
+      clouds: "cloud",
       rain: "tint",
-      thunder: "bolt",
-      snow: "snowflake"
-    }
+      thunderstorm: "bolt",
+      snow: "snowflake",
+      drizzle: "tint"
+    } as Record<string, string>
   }),
 
   computed: {
-    icon() {
+    icon(): string {
       return this.weathers[this.weather];
     },
 
-    humanDay() {
+    humanDay(): string {
       return Moment()
         .add(this.day, "days")
         .format("dddd");

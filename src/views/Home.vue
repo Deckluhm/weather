@@ -4,14 +4,18 @@
     #temperature
       | {{ temperature }}
       span °C
-    #description {{ description }}
+    #condition {{ condition }}
   #forecast
-    forecast-day(v-for='({ weather, min, max }, index) in forecast' :day='index' :weather='weather' :min='min' :max='max')
+    forecast-day(v-for='({ weather, min, max }, index) in forecast' :key='index' :day='index + 1' :weather='weather' :min='min' :max='max')
 </template>
 
 <script lang="ts">
+import _ from "lodash";
 import Vue from "vue";
+import { mapState } from "vuex";
 import ForecastDay from "@/components/ForecastDay.vue";
+import OpenWeatherAPI from "@/services/open-weather-api.ts";
+import getConditionName from "@/helpers/get-condition-name.ts";
 
 export default Vue.extend({
   components: {
@@ -19,36 +23,63 @@ export default Vue.extend({
   },
 
   data: () => ({
-    temperature: 25,
-    description: "Clear",
-    forecast: [
-      {
-        weather: "thunder",
-        min: 15,
-        max: 29
-      },
-      {
-        weather: "cloud",
-        min: 12,
-        max: 27
-      },
-      {
-        weather: "sun",
-        min: 13,
-        max: 28
-      },
-      {
-        weather: "sun",
-        min: 16,
-        max: 33
-      },
-      {
-        weather: "rain",
-        min: 12,
-        max: 25
-      }
-    ]
-  })
+    coordinates: [0, 0],
+    temperature: 0,
+    rawCondition: "",
+    forecast: [] as {
+      weather: string;
+      min: number;
+      max: number;
+    }[]
+  }),
+
+  computed: {
+    ...mapState(["cities"]),
+
+    currentCity(): string {
+      return this.cities[0];
+    },
+
+    condition(): string {
+      return _(this.rawCondition).capitalize();
+    }
+  },
+
+  async created() {
+    await this.fetchCurrentWeather();
+    this.fetchForecast5Days();
+  },
+
+  methods: {
+    async fetchCurrentWeather() {
+      const { data } = await OpenWeatherAPI.fetch("weather", {
+        q: this.currentCity
+      });
+
+      this.coordinates = [data.coord.lat, data.coord.lon];
+      this.temperature = Math.round(data.main.temp);
+      this.rawCondition = getConditionName(data.weather[0].id);
+    },
+
+    async fetchForecast5Days() {
+      const [lat, lon] = this.coordinates;
+      const { data } = await OpenWeatherAPI.fetch("onecall", {
+        lat,
+        lon,
+        exclude: "current,minutely,hourly"
+      });
+
+      this.forecast = _(data.daily)
+        .drop()
+        .take(5)
+        .map(day => ({
+          weather: getConditionName(day.weather[0].id),
+          min: Math.round(day.temp.min),
+          max: Math.round(day.temp.max)
+        }))
+        .value();
+    }
+  }
 });
 </script>
 
@@ -78,7 +109,7 @@ export default Vue.extend({
     width: calc(100% - 1.5rem * 2);
     position: absolute;
     bottom: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: $border-radius;
     background-color: rgba(white, 0.1);
     color: white;
