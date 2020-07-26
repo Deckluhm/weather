@@ -4,7 +4,7 @@ const OPEN_WEATHER_API_KEY = process.env.VUE_APP_OPEN_WEATHER_API_KEY;
 const OPEN_WEATHER_API_VERSION = process.env.VUE_APP_OPEN_WEATHER_API_VERSION;
 
 const instance = Axios.create({
-  baseURL: `http://api.openweathermap.org/data/${OPEN_WEATHER_API_VERSION}/`
+  baseURL: `https://api.openweathermap.org/data/${OPEN_WEATHER_API_VERSION}/`
 });
 
 export default {
