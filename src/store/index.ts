@@ -5,10 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    title: "Weather",
     cities: ["Lyon"] as Array<string>
   },
 
   mutations: {
+    setTitle(state, title: string) {
+      state.title = title;
+    },
+
     addCity(state, city: string) {
       state.cities.push(city);
     },

@@ -12,7 +12,7 @@
 <script lang="ts">
 import _ from "lodash";
 import Vue from "vue";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import ForecastDay from "@/components/ForecastDay.vue";
 import OpenWeatherAPI from "@/services/open-weather-api.ts";
 import getConditionName from "@/helpers/get-condition-name.ts";
@@ -46,11 +46,14 @@ export default Vue.extend({
   },
 
   async created() {
+    this.setTitle(this.currentCity);
     await this.fetchCurrentWeather();
     this.fetchForecast5Days();
   },
 
   methods: {
+    ...mapMutations(["setTitle"]),
+
     async fetchCurrentWeather() {
       const { data } = await OpenWeatherAPI.fetch("weather", {
         q: this.currentCity

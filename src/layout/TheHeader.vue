@@ -1,17 +1,16 @@
 <template lang="pug">
 nav
   icon(icon='bars')
-  #city {{ city }}
+  #title {{ title }}
   icon(icon='cog')
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState } from "vuex";
 
 export default Vue.extend({
-  data: () => ({
-    city: "Lyon"
-  })
+  computed: mapState(["title"])
 });
 </script>
 
@@ -28,7 +27,7 @@ nav {
     cursor: pointer;
     font-size: x-large;
   }
-  #city {
+  #title {
     font-weight: bold;
   }
 }
