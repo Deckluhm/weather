@@ -2,8 +2,10 @@
 #content
   #today
     #temperature
-      | {{ temperature }}
-      span °C
+      #sign
+        div(v-if='temperature < 0') -
+      #number {{ absoluteTemperature }}
+      #unit °C
     #condition {{ condition }}
   #forecast
     forecast-day(v-for='({ weather, min, max }, index) in forecast' :key='index' :day='index + 1' :weather='weather' :min='min' :max='max')
@@ -38,6 +40,10 @@ export default Vue.extend({
 
     currentCity(): string {
       return this.cities[0];
+    },
+
+    absoluteTemperature(): number {
+      return Math.abs(this.temperature);
     },
 
     condition(): string {
@@ -93,17 +99,31 @@ export default Vue.extend({
   #today {
     box-sizing: border-box;
     width: 100%;
+    margin-top: 5rem;
     background-color: #5a9cfe;
     color: white;
     #temperature {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       line-height: 1;
-      font-size: 3.5rem;
-      span {
-        font-size: 2rem;
+      #sign,
+      #number {
+        font-size: 4.5rem;
       }
+      #sign {
+        flex: 1;
+        text-align: right;
+      }
+      #unit {
+        flex: 1;
+        margin-top: 0.4rem;
+        font-size: 1.75rem;
+      }
+    }
+    #condition {
+      text-align: center;
+      font-size: 1.25rem;
     }
   }
 
