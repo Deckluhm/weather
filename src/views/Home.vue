@@ -100,7 +100,7 @@ export default Vue.extend({
     box-sizing: border-box;
     width: 100%;
     margin-top: 5rem;
-    color: white;
+    color: var(--font-color);
     #temperature {
       display: flex;
       align-items: flex-start;

@@ -11,11 +11,27 @@ import {
   faCloud,
   faTint,
   faBolt,
-  faSnowflake
+  faSnowflake,
+  faPlusCircle,
+  faTimes,
+  faMapMarkerAlt,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faBars, faCog, faSun, faCloud, faTint, faBolt, faSnowflake);
+library.add(
+  faBars,
+  faCog,
+  faSun,
+  faCloud,
+  faTint,
+  faBolt,
+  faSnowflake,
+  faPlusCircle,
+  faTimes,
+  faMapMarkerAlt,
+  faArrowLeft
+);
 
 Vue.component("icon", FontAwesomeIcon);
 

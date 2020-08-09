@@ -1,6 +1,9 @@
 <template lang="pug">
 nav
-  icon(icon='bars')
+  router-link(v-if='isHomePage' :to='{ name: "Cities" }')
+    icon(icon='bars')
+  router-link(v-else :to='{ name: "Home" }')
+    icon(icon='arrow-left')
   #title {{ title }}
   icon(icon='cog')
 </template>
@@ -8,9 +11,24 @@ nav
 <script lang="ts">
 import Vue from "vue";
 import { mapState } from "vuex";
+import { Route } from "vue-router";
 
 export default Vue.extend({
-  computed: mapState(["title"])
+  data() {
+    return {
+      isHomePage: this.$route.name === "Home"
+    };
+  },
+
+  computed: {
+    ...mapState(["title"])
+  },
+
+  watch: {
+    $route(to: Route) {
+      this.isHomePage = to.name === "Home";
+    }
+  }
 });
 </script>
 
@@ -23,6 +41,9 @@ nav {
   padding: 1rem;
   background-color: rgba(white, 0.1);
   color: white;
+  a {
+    color: white;
+  }
   svg {
     cursor: pointer;
     font-size: x-large;

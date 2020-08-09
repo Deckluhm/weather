@@ -26,6 +26,7 @@ body {
 body {
   margin: 0;
   background-color: #5a9cfe;
+  --font-color: pink;
   font-family: Inter;
 }
 </style>
