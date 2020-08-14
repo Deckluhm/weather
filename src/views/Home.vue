@@ -97,10 +97,9 @@ export default Vue.extend({
   padding: 1.5rem;
 
   #today {
-    box-sizing: border-box;
     width: 100%;
     margin-top: 5rem;
-    color: white;
+    color: $white;
     #temperature {
       display: flex;
       align-items: flex-start;
@@ -127,14 +126,13 @@ export default Vue.extend({
   }
 
   #forecast {
-    box-sizing: border-box;
     width: calc(100% - 1.5rem * 2);
     position: absolute;
     bottom: 1.5rem;
     padding: 1.5rem;
     border-radius: $border-radius;
-    background-color: rgba(white, 0.1);
-    color: white;
+    background-color: rgba($white, 0.1);
+    color: $white;
   }
 }
 </style>

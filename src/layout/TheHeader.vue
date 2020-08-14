@@ -21,8 +21,8 @@ nav {
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: rgba(white, 0.1);
-  color: white;
+  background-color: rgba($white, 0.1);
+  color: $white;
   svg {
     cursor: pointer;
     font-size: x-large;

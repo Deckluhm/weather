@@ -17,15 +17,10 @@ export default Vue.extend({
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
-html,
-body {
-  padding: 0;
-}
+@import "bootstrap";
 
 body {
-  margin: 0;
-  background-color: #5a9cfe;
+  background-color: $primary;
   font-family: Inter;
 }
 </style>
