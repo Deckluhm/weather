@@ -11,11 +11,11 @@ import {
   faCloud,
   faTint,
   faBolt,
-  faSnowflake
+  faCrosshairs
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faBars, faCog, faSun, faCloud, faTint, faBolt, faSnowflake);
+library.add(faBars, faCog, faSun, faCloud, faTint, faBolt, faCrosshairs);
 
 Vue.component("icon", FontAwesomeIcon);
 
