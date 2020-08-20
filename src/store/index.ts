@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     title: "Weather",
-    cities: ["Lyon"] as Array<string>
+    cities: [] as Array<string>
   },
 
   mutations: {
