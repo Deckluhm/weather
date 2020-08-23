@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import TheApp from "@/layout/TheApp.vue";
 import Onboarding from "@/views/Onboarding.vue";
 import Home from "@/views/Home.vue";
+import Settings from "@/views/Settings.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const routes: Array<RouteConfig> = [
         path: "/",
         name: "Home",
         component: Home
+      },
+      {
+        path: "/settings",
+        name: "Settings",
+        component: Settings
       }
     ]
   }

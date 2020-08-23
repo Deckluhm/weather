@@ -1,16 +1,32 @@
 <template lang="pug">
-nav
-  icon(icon='bars')
+nav(:class='{ "not-homepage": !isHomePage }')
+  icon(icon='bars' v-if='isHomePage')
+  router-link(v-else :to='{ name: "Home" }')
+    icon(icon='arrow-left')
   #title {{ title }}
-  icon(icon='cog')
+  router-link(v-if='isHomePage' :to='{ name: "Settings" }')
+    icon(icon='cog')
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { mapState } from "vuex";
+import { Route } from "vue-router";
 
 export default Vue.extend({
-  computed: mapState(["title"])
+  data() {
+    return {
+      isHomePage: this.$route.name === "Home"
+    };
+  },
+
+  computed: mapState(["title"]),
+
+  watch: {
+    $route(to: Route) {
+      this.isHomePage = to.name === "Home";
+    }
+  }
 });
 </script>
 
@@ -23,6 +39,16 @@ nav {
   padding: 1rem;
   background-color: rgba($white, 0.1);
   color: $white;
+  &.not-homepage {
+    justify-content: flex-start;
+    #title {
+      margin-left: 1.5rem;
+    }
+  }
+  a {
+    display: flex;
+    color: $white;
+  }
   svg {
     cursor: pointer;
     font-size: x-large;

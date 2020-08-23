@@ -9,7 +9,7 @@
       #sign
         div(v-if='temperature < 0') -
       #number {{ absoluteTemperature }}
-      #unit °C
+      #unit °{{ unitLetter }}
     #condition {{ condition }}
   #forecast(v-if='!isLoading')
     forecast-day(v-for='({ weather, min, max }, index) in forecast' :key='index' :day='index + 1' :weather='weather' :min='min' :max='max')
@@ -22,6 +22,7 @@ import { mapMutations } from "vuex";
 import ForecastDay from "@/components/ForecastDay.vue";
 import Geolocation from "@/services/geolocation.ts";
 import OpenWeatherAPI from "@/services/open-weather-api.ts";
+import getUnit from "@/helpers/get-unit.ts";
 import getConditionName from "@/helpers/get-condition-name.ts";
 
 export default Vue.extend({
@@ -33,6 +34,7 @@ export default Vue.extend({
     isLoading: true,
     coordinates: {} as Coordinates,
     temperature: 0,
+    unit: "",
     rawCondition: "",
     forecast: [] as {
       weather: string;
@@ -46,12 +48,17 @@ export default Vue.extend({
       return Math.abs(this.temperature);
     },
 
+    unitLetter() {
+      return this.unit[0].toUpperCase();
+    },
+
     condition(): string {
       return _(this.rawCondition).capitalize();
     }
   },
 
-  created() {
+  mounted() {
+    this.unit = getUnit();
     this.fetchWeatherData();
   },
 
