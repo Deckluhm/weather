@@ -114,6 +114,8 @@ export default Vue.extend({
             console.warn(`ERROR(${code}): ${message}`);
           }
         );
+      } else {
+        this.$router.replace({ name: "Onboarding" });
       }
     }
   }

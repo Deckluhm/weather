@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "/onboarding",
+    name: "Onboarding",
     component: Onboarding
   },
   {
