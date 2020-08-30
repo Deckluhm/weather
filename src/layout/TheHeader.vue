@@ -1,6 +1,7 @@
 <template lang="pug">
 nav(:class='{ "not-homepage": !isHomePage }')
-  ion-icon(name='add-outline' v-if='isHomePage')
+  router-link(v-if='isHomePage' :to='{ name: "Cities" }')
+    ion-icon(name='add-outline')
   router-link(v-else :to='{ name: "Home" }')
     ion-icon(name='arrow-back-outline')
   #title {{ title }}

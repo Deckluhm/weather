@@ -4,6 +4,7 @@ import TheApp from "@/layout/TheApp.vue";
 import Onboarding from "@/views/Onboarding.vue";
 import Home from "@/views/Home.vue";
 import Settings from "@/views/Settings.vue";
+import Cities from "@/views/Cities.vue";
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes: Array<RouteConfig> = [
         path: "/settings",
         name: "Settings",
         component: Settings
+      },
+      {
+        path: "/cities",
+        name: "Cities",
+        component: Cities
       }
     ]
   }
