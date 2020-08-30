@@ -1,0 +1,39 @@
+{
+  "daily": [{
+    "temp": {
+      "min": 18,
+      "max": 25
+    },
+    "weather": [{ "id": 800 }]
+  }, {
+    "temp": {
+      "min": 19,
+      "max": 26
+    },
+    "weather": [{ "id": 502 }]
+  }, {
+    "temp": {
+      "min": 18,
+      "max": 28
+    },
+    "weather": [{ "id": 202 }]
+  }, {
+    "temp": {
+      "min": 20,
+      "max": 32
+    },
+    "weather": [{ "id": 802 }]
+  }, {
+    "temp": {
+      "min": 22,
+      "max": 33
+    },
+    "weather": [{ "id": 300 }]
+  }, {
+    "temp": {
+      "min": 20,
+      "max": 35
+    },
+    "weather": [{ "id": 800 }]
+  }]
+}

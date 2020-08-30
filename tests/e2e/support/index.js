@@ -13,8 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+import { fetch } from "whatwg-fetch";
 import "./commands";
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+Cypress.on("window:before:load", win => {
+  win.fetch = fetch;
+});

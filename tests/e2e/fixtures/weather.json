@@ -1,0 +1,9 @@
+{
+  "name": "Lyon",
+  "main": {
+    "temp": 25
+  },
+  "weather": [{
+    "id": 800
+  }]
+}
