@@ -1,7 +1,7 @@
 <template lang="pug">
 .day
   div
-    icon.fa-fw(:icon='icon' )
+    ion-icon(:name='`${icon}-outline`')
     span.weekday {{ humanDay }}
   .temperatures {{ min }}° / {{ max }}°
 </template>
@@ -32,12 +32,12 @@ export default Vue.extend({
 
   data: () => ({
     weathers: {
-      clear: "sun",
-      clouds: "cloud",
-      rain: "tint",
-      thunderstorm: "bolt",
-      snow: "snowflake",
-      drizzle: "tint"
+      clear: "sunny",
+      clouds: "cloudy",
+      rain: "rainy",
+      thunderstorm: "flash",
+      snow: "snow",
+      drizzle: "rainy"
     } as Record<string, string>
   }),
 
@@ -63,8 +63,13 @@ export default Vue.extend({
   & + .day {
     margin-top: 1.5rem;
   }
-  svg {
+  div:first-child {
+    display: flex;
+    align-items: center;
+  }
+  ion-icon {
     margin-right: 1rem;
+    font-size: x-large;
   }
 }
 </style>

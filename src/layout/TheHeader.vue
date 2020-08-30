@@ -1,11 +1,11 @@
 <template lang="pug">
 nav(:class='{ "not-homepage": !isHomePage }')
-  icon(icon='bars' v-if='isHomePage')
+  ion-icon(name='add-outline' v-if='isHomePage')
   router-link(v-else :to='{ name: "Home" }')
-    icon(icon='arrow-left')
+    ion-icon(name='arrow-back-outline')
   #title {{ title }}
   router-link(v-if='isHomePage' :to='{ name: "Settings" }')
-    icon(icon='cog')
+    ion-icon(name='settings-outline')
 </template>
 
 <script lang="ts">
@@ -35,10 +35,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: rgba($white, 0.1);
-  color: $white;
+  padding: 2rem;
+  color: var(--text-color);
   &.not-homepage {
     justify-content: flex-start;
     #title {
@@ -47,9 +45,9 @@ nav {
   }
   a {
     display: flex;
-    color: $white;
+    color: var(--text-color);
   }
-  svg {
+  ion-icon {
     cursor: pointer;
     font-size: x-large;
   }

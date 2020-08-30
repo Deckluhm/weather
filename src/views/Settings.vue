@@ -1,7 +1,7 @@
 <template lang="pug">
 #content(v-if='unit')
   h5 Unit
-  button#unit.btn.btn-light(@click='changeUnit()')
+  button#unit(@click='changeUnit()')
     #name {{ capitalizedUnit }}
     #symbol {{ symbol }}
 </template>
@@ -52,23 +52,23 @@ export default Vue.extend({
 
   h5 {
     margin-bottom: 1rem;
-    color: $white;
+    color: var(--text-color);
   }
   #unit {
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 1.5rem;
+    border-radius: $border-radius-lg;
     border: 0;
-    &:active,
-    &:focus {
-      background-color: $white;
-    }
+    background-color: rgba(var(--text-color-rgb), 0.1);
+    color: var(--background-color);
     #name {
       font-weight: bold;
+      color: var(--text-color);
     }
     #symbol {
-      color: $text-muted;
+      color: rgba(var(--text-color-rgb), 0.75);
     }
   }
 }

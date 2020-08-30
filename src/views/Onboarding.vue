@@ -1,8 +1,8 @@
 <template lang="pug">
 #setup
-  h1 Welcome
-  button.btn.btn-light.btn-lg(@click='getCurrentLocation()')
-    icon(icon='crosshairs')
+  ion-icon(name='partly-sunny-outline')
+  h1 Weather Please
+  button.btn.btn-outline-primary.btn-lg(@click='getCurrentLocation()')
     | Use current location
 </template>
 
@@ -56,15 +56,17 @@ export default Vue.extend({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $white;
-  h1 {
-    margin-bottom: 2rem;
-    & + button {
-      color: $primary;
-      svg {
-        margin-right: 0.5em;
-      }
+  background-color: $white;
+  color: $primary;
+  ion-icon {
+    font-size: 2.5rem;
+    & + h1 {
+      margin: 1.5rem 0 2.5rem;
     }
+  }
+  button {
+    display: flex;
+    align-items: center;
   }
 }
 </style>

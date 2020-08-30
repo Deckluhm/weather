@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     title: "Weather",
-    cities: [] as Array<string>
+    cities: [] as Array<string>,
+    currentCondition: ""
   },
 
   mutations: {
@@ -20,6 +21,10 @@ export default new Vuex.Store({
 
     removeCity(state, city: string) {
       state.cities = state.cities.filter(city_ => city_ !== city);
+    },
+
+    setCurrentCondition(state, condition: string) {
+      state.currentCondition = condition;
     }
   }
 });

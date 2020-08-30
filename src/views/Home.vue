@@ -63,7 +63,7 @@ export default Vue.extend({
   },
 
   methods: {
-    ...mapMutations(["setTitle"]),
+    ...mapMutations(["setTitle", "setCurrentCondition"]),
 
     async fetchCurrentWeather() {
       const { latitude: lat, longitude: lon } = this.coordinates;
@@ -75,6 +75,7 @@ export default Vue.extend({
       this.setTitle(data.name);
       this.temperature = Math.round(data.main.temp);
       this.rawCondition = getConditionName(data.weather[0].id);
+      this.setCurrentCondition(this.rawCondition);
     },
 
     async fetchForecast5Days() {
@@ -130,7 +131,7 @@ export default Vue.extend({
 
   #spinner {
     text-align: center;
-    color: $white;
+    color: var(--text-color);
     .spinner-border {
       --size: 3rem;
       display: flex;
@@ -145,7 +146,7 @@ export default Vue.extend({
 
   #today {
     width: 100%;
-    color: $white;
+    color: var(--text-color);
     #temperature {
       display: flex;
       align-items: flex-start;
@@ -172,13 +173,13 @@ export default Vue.extend({
   }
 
   #forecast {
-    width: calc(100% - 1.5rem * 2);
+    width: 100%;
     position: absolute;
-    bottom: 1.5rem;
-    padding: 1.5rem;
-    border-radius: $border-radius;
-    background-color: rgba($white, 0.1);
-    color: $white;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 2.5rem;
+    color: var(--text-color);
   }
 }
 </style>
