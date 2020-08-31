@@ -1,34 +1,13 @@
-# weather
+# ⛅ Weather
 
-## Project setup
-```
-yarn install
-```
+https://weather-please.netlify.app
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## 🚀 Project setup
 
-### Compiles and minifies for production
-```
-yarn build
-```
+1. Install dependencies: `yarn install`
+2. Run development server: `yarn serve`
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## ✔️ Tests & Lint
 
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- End-to-end tests with headless Chrome: `yarn test:e2e`
+- Lints and fixes files: `yarn lint`
