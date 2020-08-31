@@ -34,14 +34,7 @@ export default Vue.extend({
 }
 
 body {
-  transition: background-color 0.5s;
-  height: 100vh;
   @include background-color($blue-500, $blue-700);
-  background: linear-gradient(
-    180deg,
-    var(--background-color) 0%,
-    var(--background-color-secondary) 100%
-  );
   font-family: Inter;
   @include text-color($white);
 
@@ -52,6 +45,9 @@ body {
   &.clouds {
     @include background-color($gray-200, $gray-400);
     @include text-color($gray-700);
+    #app {
+      border-color: $gray-500;
+    }
   }
   &.drizzle {
     @include background-color($blue-600, $blue-800);
@@ -64,6 +60,9 @@ body {
   &.snow {
     @include background-color($white, $gray-200);
     @include text-color($gray-700);
+    #app {
+      border-color: $gray-500;
+    }
   }
   &.thunderstorm {
     @include background-color($blue-700, $blue-900);
@@ -72,6 +71,25 @@ body {
   &.atmosphere {
     @include background-color($blue-700, $blue-900);
     @include text-color($white);
+  }
+
+  #app {
+    transition: background-color 0.5s;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+      180deg,
+      var(--background-color) 0%,
+      var(--background-color-secondary) 100%
+    );
+    @include media-breakpoint-up(sm) {
+      position: relative;
+      max-width: 450px;
+      height: 800px;
+      margin: 3rem auto;
+      border-radius: 1rem;
+      border: $white 1px solid;
+    }
   }
 }
 </style>
