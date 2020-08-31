@@ -10,5 +10,15 @@ module.exports = {
         `
       }
     }
+  },
+
+  pwa: {
+    name: "Weather",
+    themeColor: "#ffffff",
+    msTileColor: "#0d6efd",
+    manifestOptions: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      background_color: "#0d6efd"
+    }
   }
 };
